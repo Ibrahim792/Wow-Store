@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>homepage</title>
+</head>
+<body>
+      
+      <div class="container-fluid">
+        <!-- < row 1 > -->
+        <div  class="row">
+
+          <div class="col-3">
+            
+            <a href="home"><img src="static/images/wowlogo.jpg" alt="" height="140px" width="140px"></a>
+          </div>
+          <div id="anchor" class="col-1" style="margin-left: 4%;">
+            <a href="home"><i class="bi bi-house">Home</i></a>
+          </div>
+          <div  id="anchor" class="col-1">
+            <a href="about"> <i class="bi bi-file-earmark-person">About </i></a>
+          </div>
+          <div  id="anchor" class="col-1">
+            <a href="order"> <i class="bi bi-bag-fill">Order </i></a>
+          </div>
+          <div  id="anchor" class="col-1">
+            <a href="/cart" > <i class="bi bi-cart-check">Cart </i></a>
+          </div>
+          {% if user.is_authenticated %}
+          <div id="anchor" class="col-1">
+            <a  href="logout"><i class="bi bi-box-arrow-right">Logout</i></a>
+          </div>
+          {% else %}
+          <div id="anchor" class="col-1">
+            <a href="login"><i class="bi bi-person-fill " > Login</i></a>
+          </div>
+          <div id="reg" class="col">
+            <a href="register"><i class="bi bi-person-add fs-3  "></i></a>
+            </div>
+          {% endif %}
+        </div><br>
+    <!-- < row 1 > -->
+        <!-- < row 2 > -->
+      <div class="row">
+      <h4 class="shadow p-2 mb-1 bg-body rounded"> <i>ALL PRODUCTS</i></h4>
+      </div>
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="static/images/wowimage1.jpg" class="images" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="static/images/wowimage2.jpg" class="images" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="static/images/wowimage3.jpg" class="images" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="static/images/wowimage4.jpg" class="images" alt="...">
+              </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <!-- < row 2 > -->
+        
+        <!-- < row 3 > -->
+        <div class="row mt-4">
+          {% for x in products %}
+            <div class="col-md-2 p-1">
+              <div class="card shadow bg-body rounded p-1" style="height: 100%;">
+                <a href="/description/{{x.id}}"><img src="{{x.pimages.url}}" class="card-img-top p-4" alt="..."></a>
+                <h6 class="card-title p-0">{{x.name}}</h6>
+                <small><p class="p-1" style="color: green;">{{x.description}}</p></small>
+                <div align="center" class="card-bottom" style="margin:auto;position:relative;margin-bottom:3px">
+              <i class="bi bi-currency-rupee">{{x.price}}</i><br>
+            <a href="/addcart/{{x.id}}"><button type="button" class="btn btn-warning" id="btn" onclick="AddtoCart()">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Add to cart &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </button></a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+      </div><br><hr>
+        <!-- < row 3 > -->
+         <!-- < row 4 > -->
+ <div class="row">
+  <div align="center" class="col-3">
+    <b><h4>ONLINE SHOPPING</h4></b>
+    <a href=""><p>SKIN</p></a>
+    <a href=""><p>HAIRS</p></a>
+    <a href=""><p>BATH & BODY</p></a>
+    <a href=""><p>NUTRITION</p></a>
+    <a href=""><p>KIDS</p></a>
+    <a href=""><p>BLOGS</p></a>
+  </div>
+
+  <div align="center" class="col-3">
+    <b><h4>EXPLORE</h4></b>
+    <a href=""><p>Our story</p></a>
+    <a href=""><p>FAQs</p></a>
+    <a href=""><p>Blog</p></a>
+    <a href=""><p>Contact Us</p></a>
+  </div>
+
+  <div align="center" class="col-3">
+    <b><h4>QUICK LINKS</h4></b>
+    <a href=""><p>My Account</p></a>
+    <a href=""><p>Track Your Order</p></a>
+    <a href=""><p>Refund policy</p></a>
+    <a href=""><p>Return policy</p></a>
+    <a href=""><p>Privacy Policy</p></a>
+    <a href=""><p>Refer and save</p></a>
+  </div>
+
+  <div align="center" class="col-3">
+    <b><h4>EXPERIENCE SUPERTAILS APP ON MOBILE</h4></b><br>
+    <b><h4>FOLLOW US</h4></b>
+    
+    <a href=""><i class="bi bi-instagram p-1"></i></a>
+    <a href=""><i class="bi bi-facebook p-1"></i></a>
+    <a href=""><i class="bi bi-youtube p-1"></i></a>
+    <a href=""><i class="bi bi-twitter p-1"></i></a>
+    <a href=""><i class="bi bi-linkedin p-1"></i></a>
+    <br><br>
+    <b><h5>GET IN TOUCH</h5></b>
+    <p><a href=""><i class="bi bi-telephone"></i> 1800-5701-502</a></p>
+    <p><a href=""><i class="bi bi-envelope"></i> support@wowapp.com</a></p>
+  </div>
+</div>
+<!-- < row 4 > -->
+</div>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/home.js"></script>
+
+</body>
+</html>

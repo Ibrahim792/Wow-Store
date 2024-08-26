@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+<div class="row">
+<div class="carousel-item active">
+  <img src="{% static 'images/wowimage3.jpg' %}" class="images" alt="...">
+</div>
+</div><br>
+
+<div class="row">
+{% for x in products %}
+  <div class="col-md-4">
+  <img src="{{x.pimages.url}}" width="90%" alt="">
+</div>
+<div class="col-md-4 p-4">
+  <h5>{{x.name}}</h5>
+  <small style="color: darkgreen;">{{x.description}}</small><br><br>
+  <b>MRP: </b><i class="bi bi-currency-rupee">{{x.price}}</i>
+    <p><a href="/addcart/{{x.id}}"><button class="btn btn-light"> Add to cart </button></a>
+    <button class="btn btn-warning"> Buy Now </button> </p>
+</div>
+    
+</div><br><hr>
+{% endfor %}
+
+  {% endblock 'main' %}
+     

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+  {% block 'main' %}
+
+        <!-- < row 3 > -->
+        <div class="row">
+            <div align="center">
+            <div  class="col-md-4 shadow-sm p-2 text-bg-dark rounded">
+              <form action="" method="POST">
+                {% csrf_token %}
+                  <h5 style="background-color:red">REGISTRATION <hr></h5>
+                {% if error %}
+                  <div class="alert alert-danger col-md-10 shadow-sm p-3">{{error}}</div>
+                {% endif %}
+                <div class="mb-4 row">
+                  <label for="name" align="left" class="col-sm-4 col-form-label"><b> Username </b> </label>
+                  <div class="col-sm-8">
+                  <input type="text" class="form-control" id="name" placeholder="abc@gmail.com" name="uname">
+                  </div>
+                </div>
+                
+                <div class="mb-4 row">
+                  <label for="password" align="left" class="col-sm-4 col-form-label"><b> Password </b> </label>
+                  <div class="col-sm-8">
+                  <input type="password" class="form-control" id="password"  placeholder="password must be 8 characters long" name="pwd">
+                  </div>
+                </div>
+  
+                <div class="mb-4 row">
+                  <label for="confirmpassword" class="col-sm-4 col-form-label"><b> Confirm Password </b> </label>
+                  <div class="col-sm-8">
+                    <input type="password" class="form-control" id="confirmpassword"  placeholder="password and confirm should match" name="cpwd">
+                  </div>
+                </div >
+                {% if success %}
+                  <div class="alert alert-success col-md-10 shadow-sm p-3">{{success}}</div>
+                {% endif %}
+              <button type="submit" class="btn btn-success">&nbsp;&nbsp; Submit &nbsp;&nbsp;</button> 
+              <p>already user? <a href="login" style="color: blue;">login</a></p>  
+              </form>
+            </div>
+          </div>
+          </div><br><hr>
+  
+        <!-- < row 3 > -->
+  {% endblock 'main' %}

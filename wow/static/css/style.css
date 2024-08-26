@@ -1,0 +1,31 @@
+#anchor{
+    margin-top: 10ch;
+    padding: auto;
+    text-transform: capitalize;
+    text-align: center;
+    text-decoration: none;
+    
+}
+a{
+    text-decoration: none;
+    color: black;
+    
+}
+#reg{
+    margin-top: 2ch;
+    text-align: right;
+}
+
+h4{
+    text-align: center;
+    
+}
+.images{
+    height: 450px;
+    width: 100%;
+}
+.card{
+    margin: 1%;
+    padding-top: 1%;
+}
+

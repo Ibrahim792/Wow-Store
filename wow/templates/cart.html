@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+  {% block 'main' %}
+
+  <div class="row">
+    {% for x in products %}
+    <div class="col-md-4">
+      <img src="{{x.pid.pimages.url}}" width="60%" alt="">
+    </div>
+    <div class="col-md-4 p-2">
+      <h5> {{x.pid.name}} </h5>
+      <b>MRP: </b><i class="bi bi-currency-rupee"> {{x.pid.price}} </i><br>
+      <p><a href="updateqty/0/{{x.id}}"><button class="btn btn-danger"> - </button></a> 
+            &nbsp; {{x.qty}} &nbsp;
+        <a href="updateqty/1/{{x.id}}"><button class="btn btn-danger"> + </button></a> </p>
+    </div>
+    <div align="right" class="col-md-4">
+      <a href="remove/{{x.id}}"><i class="bi bi-trash fs-4"></i></a>
+    </div>
+    {% endfor %}
+    </div><br>
+
+    <div class="row">
+        <h3>Payment Summery</h3>
+        <div class="col-3 p-3 mb-2 bg-light rounded">
+            <p> <b>Cart MRP: </b> <i class="bi bi-currency-rupee"> {{total}}</i></p>
+            <p><b> Shipping :  </b><small style="color: green;">FREE</small></p> 
+            <p><b>TOTAL : <i class="bi bi-currency-rupee"></i> {{total}} </b></p>
+        
+        </div>     
+    </div>
+    <div class="col-md-3">
+        <a  href="/order"><button  class="btn btn-warning"> BEGIN CHECKOUT </button></a>     
+    </div><br><hr>
+
+  {% endblock 'main' %}

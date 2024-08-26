@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+  {% block 'main' %}
+
+    <div class="row">       
+    {% for x in products %}
+    {% if forloop.counter == 1 %}
+    <h2>Payment Summery</h2>
+        <div class="col-3 p-3 mb-2 bg-light rounded">
+            <p> <b>ORDER ID: </b> <i> {{x.orderId}}</i></p>
+            <p> <b>Cart MRP: </b> <i class="bi bi-currency-rupee"> {{total}}</i></p>
+            <p><b> Shipping :  </b><small style="color: green;">FREE</small></p> 
+            <p><b>TOTAL : <i class="bi bi-currency-rupee"></i> {{total}} </b></p>
+        </div>
+        {% endif%}
+    {% endfor %} 
+    </div>
+    <div class="col-md-3">
+        <a  href="payment"><button  class="btn btn-warning"> PROCEED TO PAY </button></a>     
+    </div><br><hr>
+  {% endblock 'main' %}
